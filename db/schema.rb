@@ -11,14 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130507030445) do
+ActiveRecord::Schema.define(:version => 20130507070133) do
 
   create_table "issues", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "picture"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "issue_number"
+    t.integer  "series_id"
+    t.boolean  "own"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "series", :force => true do |t|
+    t.string   "title"
+    t.boolean  "pull"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "series", ["title"], :name => "index_series_on_title", :unique => true
+
+  create_table "volumes", :force => true do |t|
+    t.integer  "volume_number"
+    t.integer  "series_id"
+    t.boolean  "own"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end

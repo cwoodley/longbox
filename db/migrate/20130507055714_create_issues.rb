@@ -1,9 +1,9 @@
 class CreateIssues < ActiveRecord::Migration
   def change
     create_table :issues do |t|
-      t.string :name
-      t.text :description
-      t.string :picture
+      t.integer :issue_number
+      t.integer :series_id
+      t.boolean :own
 
       t.timestamps
     end

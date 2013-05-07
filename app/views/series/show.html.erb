@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @series.title %>
+</p>
+
+<p>
+  <b>Pull:</b>
+  <%= @series.pull %>
+</p>
+
+
+<%= link_to 'Edit', edit_series_path(@series) %> |
+<%= link_to 'Back', series_index_path %>
