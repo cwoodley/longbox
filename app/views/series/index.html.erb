@@ -1,9 +1,19 @@
 <h1>Listing series</h1>
-<%= will_paginate %>
+
+<%= form_tag("/series", :method => "get") do %>
+
+	<p>
+		<%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :name => nil %>
+	</p>
+
+<% end %>
+
 <table>
   <tr>
     <th>Title</th>
     <th>Pull</th>
+    <th>Issues</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +23,7 @@
   <tr>
     <td><%= link_to series.title, series %></td>
     <td><%= series.pull %></td>
+    <td><%= series.issues.count %></td>
     <td><%= link_to 'Show', series %></td>
     <td><%= link_to 'Edit', edit_series_path(series) %></td>
     <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -21,6 +32,5 @@
 </table>
 
 <br />
-<%= will_paginate %>
 
 <%= link_to 'New Series', new_series_path %>

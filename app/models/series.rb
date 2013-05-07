@@ -6,4 +6,13 @@ class Series < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
   
   before_save { |series| series.title = title.capitalize }
+  
+  
+  def self.search(search)
+	  if search
+	    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])
+	  else
+	    find(:all)
+	  end
+  end
 end
