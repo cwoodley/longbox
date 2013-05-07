@@ -1,4 +1,5 @@
 Comics::Application.routes.draw do
+root :to => redirect('/issues')
   resources :issues
 
 
