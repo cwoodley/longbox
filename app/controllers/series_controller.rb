@@ -2,8 +2,8 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-#     @series = Series.all
-@series = Series.paginate(page: params[:page])
+	#     @series = Series.all
+	@series = Series.paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +15,7 @@ class SeriesController < ApplicationController
   # GET /series/1.json
   def show
     @series = Series.find(params[:id])
-
+    @issues = @series.issues.paginate(page: params[:page])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @series }

@@ -10,6 +10,14 @@
   <%= @series.pull %>
 </p>
 
+    <% if @series.issues.any? %>
+      <h3>Issues (<%= @series.issues.count %>)</h3>
+      <ol class="microposts">
+        <%= render @issues %>
+      </ol>
+      <%= will_paginate @issues %>
+    <% end %>
+
 
 <%= link_to 'Edit', edit_series_path(@series) %> |
 <%= link_to 'Back', series_index_path %>
