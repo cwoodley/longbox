@@ -17,7 +17,8 @@
   </div>
   <div class="field">
     <%= f.label :series_id %><br />
-    <%= f.number_field :series_id %>
+    <%= collection_select(:issue, :series_id, Series.all, :id, :title, :prompt => 'Please select a series') %>
+<!--     <%= f.number_field :series_id %> -->
   </div>
   <div class="field">
     <%= f.label :own %><br />
