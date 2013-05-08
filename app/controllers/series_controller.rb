@@ -3,7 +3,7 @@ class SeriesController < ApplicationController
   # GET /series.json
   def index
 	@series = Series.search(params[:search]).paginate(page: params[:page])
-	@pull_list = Series.where(:pull=>true).all
+	@pull_list = @series.where(:pull=>true).all
 	@issues = Issue.all
     respond_to do |format|
       format.html # index.html.erb
