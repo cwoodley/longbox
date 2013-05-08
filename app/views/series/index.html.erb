@@ -15,8 +15,7 @@
 
 <h1>Pull List</h1>
 
-<% @series.each do |series|
-	if series.pull != false %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -26,6 +25,7 @@
     <th></th>
     <th></th>
   </tr>
+  <% @pull_list.each do |series|%>
   <tr>
     <td><%= link_to series.title, series %></td>
     <td><%= series.pull %></td>
@@ -34,8 +34,7 @@
     <td><%= link_to 'Edit', edit_series_path(series) %></td>
     <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-<% end
-end %>
+  <% end %>
 </table>
 <br />
 
