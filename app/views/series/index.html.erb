@@ -16,7 +16,7 @@
 <h1>Pull List</h1>
 
 <% @series.each do |series|
-	if series.pull == true %>
+	if series.pull != false %>
 <table>
   <tr>
     <th>Title</th>
