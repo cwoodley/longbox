@@ -1,4 +1,4 @@
-<h1>Pull List</h1>
+<h1>New List</h1>
 <%
 	@issues.each do |issue|
  		if issue.own == false
@@ -12,6 +12,33 @@
 		end
 	end  		
 %>
+
+<h1>Pull List</h1>
+
+<% @series.each do |series|
+	if series.pull == true %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Pull</th>
+    <th>Issues</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <tr>
+    <td><%= link_to series.title, series %></td>
+    <td><%= series.pull %></td>
+    <td><%= series.issues.count %></td>
+    <td><%= link_to 'Show', series %></td>
+    <td><%= link_to 'Edit', edit_series_path(series) %></td>
+    <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end
+end %>
+</table>
+<br />
+
 
 <h1>Series in Collection</h1>
 <%= form_tag("/series", :method => "get") do %>
