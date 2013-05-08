@@ -15,4 +15,8 @@ class Series < ActiveRecord::Base
 	    scoped
 	  end
   end
+  
+  def to_param
+    [id, title.parameterize].join("-")
+  end  
 end
