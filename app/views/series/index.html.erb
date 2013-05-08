@@ -1,5 +1,19 @@
-<h1>Listing series</h1>
+<h1>Pull List</h1>
+<%
+	@issues.each do |issue|
+ 		if issue.own == false
+%>
+  <tr>
+    <td><%= issue.series.title %></td>
+    <td>#<%= issue.issue_number %></td>
+    <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+  </tr>
+<% 
+		end
+	end  		
+%>
 
+<h1>Series in Collection</h1>
 <%= form_tag("/series", :method => "get") do %>
 
 	<p>
@@ -8,7 +22,6 @@
 	</p>
 
 <% end %>
-
 <table>
   <tr>
     <th>Title</th>
@@ -30,7 +43,7 @@
   </tr>
 <% end %>
 </table>
-
+<%= will_paginate @series %>
 <br />
 
 <%= link_to 'New Series', new_series_path %>
