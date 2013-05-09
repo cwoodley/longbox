@@ -12,9 +12,14 @@ gem 'unicorn'
 
 group :development do
   gem 'sqlite3'
+  gem 'rspec-rails', '2.11.0'
 end
 group :production do
   gem 'pg'
+end
+
+group :test do
+  gem 'capybara', '1.1.2'
 end
 
 gem 'json'
