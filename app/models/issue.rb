@@ -1,4 +1,5 @@
 class Issue < ActiveRecord::Base
+  attr_accessible :cover
   attr_accessible :issue_number, :own, :series_id
   belongs_to :series
   
