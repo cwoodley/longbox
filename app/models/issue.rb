@@ -7,9 +7,9 @@ class Issue < ActiveRecord::Base
 
   attr_reader :cover_remote_url
   has_attached_file :cover, styles: {
-    thumb: '170x170>',
-    square: '100x100#',
-    medium: '300x300>'
+    thumb: '100x100>',
+    medium: '300x300>',
+    large: '600x600>'
   } 
 
   def cover_remote_url=(url_value)

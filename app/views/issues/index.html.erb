@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Issue number</th>
     <th>Series</th>
     <th>Own</th>
@@ -12,6 +13,7 @@
 
 <% @issues.each do |issue| %>
   <tr>
+    <td><%= image_tag issue.cover.url(:thumb) %></td>
     <td><%= issue.issue_number %></td>
     <td><%= issue.series_id %></td>
     <td><%= issue.own %></td>
