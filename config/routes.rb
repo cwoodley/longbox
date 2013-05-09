@@ -1,12 +1,6 @@
 Comics::Application.routes.draw do
   resources :volumes
   resources :issues
-
-	resources :issues, :shallow => true do
-		resources :series
-	end
-
-
   resources :series
 
 
