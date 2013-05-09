@@ -1,20 +1,27 @@
 <h1>New Comics</h1>
+<table>
 <%
 	@issues.each do |issue|
  		if issue.own == false
 %>
+ <tr>
+    <td align="center">
+
+      <%= link_to (image_tag(issue.cover.url(:thumb))), issue %>
+    </td>
+  </tr>
   <tr>
-    <td><%= issue.series.title %></td>
-    <td>#<%= issue.issue_number %></td>
-    <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
+    <td>
+      <%= link_to issue.series.title, issue %> <%= link_to issue.issue_number, issue %> <%= link_to 'Edit', edit_issue_path(issue) %>
+    </td>
   </tr>
 <% 
 		end
 	end  		
 %>
+</table>
 
 <h1>Pull List</h1>
-
 
 <table>
   <tr>
@@ -72,4 +79,4 @@
 <%= will_paginate @series %>
 <br />
 
-<%= link_to 'New Series', new_series_path %>
+<%= link_to 'New Series', new_series_path %> | <%= link_to 'New Issue', new_issue_path %>
