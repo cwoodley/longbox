@@ -10,7 +10,12 @@ class Issue < ActiveRecord::Base
     thumb: '100x100>',
     medium: '300x300>',
     large: '600x600>'
-  } 
+  },
+  :convert_options => {
+    thumb: '-quality 70',
+    :medium => "-quality 92",
+    :large => "-quality 100",
+  }
 
   def cover_remote_url=(url_value)
     self.cover = URI.parse(url_value)
