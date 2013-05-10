@@ -2,7 +2,11 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+    if params[:series_id]
+      @issues = Series.find(params[:series_id]).issues
+    else
+      @issues = Issue.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +17,8 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
-    @issue = Issue.find(params[:id])
+    
+      @issue = Issue.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
