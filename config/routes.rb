@@ -1,13 +1,13 @@
 Comics::Application.routes.draw do
   resources :volumes
 
-resources :series do
-  resources :issues, :controller => "series/issues"
-end
+  resources :series do
+    resources :issues, :controller => "series/issues"
+  end
 
-resources :issues
+  resources :issues
 
-root :to => redirect('/series')
+  root :to => redirect('/series')
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,4 +1,4 @@
-<h1>New Comics</h1>
+<!-- <h1>New Comics</h1>
 <table>
 <%
 	@issues.each do |issue|
@@ -42,40 +42,27 @@
     <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
   <% end %>
-</table>
-<br />
-
+</table> -->
 
 <h1>Series in Collection</h1>
 <%= form_tag("/series", :method => "get") do %>
-
-	<p>
-		<%= text_field_tag :search, params[:search] %>
-		<%= submit_tag "Search", :name => nil %>
-	</p>
-
+  <div class="input-group">
+    <div class="input-row">
+		<%= search_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil, :class => "button" %>
+    </div>
+	</div>
 <% end %>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Pull</th>
-    <th>Issues</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
+<ul class="list">
 <% @series.each do |series| %>
-  <tr>
-    <td><%= link_to series.title, series %></td>
-    <td><%= series.pull %></td>
-    <td><%= series.issues.count %></td>
-    <td><%= link_to 'Show', series %></td>
-    <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <li>
+  <%= link_to(series) do %>
+    <%= series.title %> <span class="chevron"></span> <span class="count"><%= series.issues.count %></span>
+  <% end %>
+  </li>
 <% end %>
-</table>
+</ul>
 <%= will_paginate @series %>
 <br />
 

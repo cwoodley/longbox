@@ -10,14 +10,19 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :pull %><br />
-    <%= f.check_box :pull %>
+  <div class="input-group">
+    <div class="input-row">
+      <%= f.label :title %><br />
+      <%= f.text_field :title %>
+    </div>
+    <div class="input-row">
+      <%= f.label :pull %><br />
+      <div class="toggle active">
+        <div class="toggle-handle"></div>
+      </div>
+      <div style="display:none;">
+      <%= f.check_box :pull %></div>
+    </div>
   </div>
   <div class="actions">
     <%= f.submit %>
