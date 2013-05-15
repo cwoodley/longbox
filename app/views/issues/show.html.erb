@@ -1,8 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= if @issue.cover.exists?
-		image_tag @issue.cover.url(:medium)
-	end
-%>
+	<%=	image_tag @issue.cover.url(:thumb).to_s %>
 <p>
   <b>Issue number:</b>
   <%= @issue.issue_number %>

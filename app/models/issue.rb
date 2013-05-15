@@ -1,43 +1,10 @@
-require 'open-uri'
-
 class Issue < ActiveRecord::Base
-  attr_accessible :issue_number, :own, :series_id, :cover, :cover_remote_url
+  attr_accessible :issue_number, :own, :series_id, :cover, :remote_cover_url
   belongs_to :series
   
   validates(:issue_number, presence: true)
   validates(:series_id, presence: true)
-  attr_reader :cover_remote_url
 
-
-  has_attached_file :cover, styles: {
-    thumb: '100x100>',
-    medium: '300x300>',
-    large: '600x600>'
-  },
-  :convert_options => {
-    thumb: '-quality 70',
-    :medium => "-quality 92",
-    :large => "-quality 100",
-  }
-
-  # def cover_remote_url=(url_value)
-  #     self.cover = URI.parse(url_value)
-  #   # Assuming url_value is http://example.com/photos/face.png
-  #   # avatar_file_name == "face.png"
-  #   # avatar_content_type == "image/png"
-  #   @cover_remote_url = url_value 
-  # end
-  
-  # def download_remote_image
-  #   self.cover = do_download_remote_image
-  #   self.cover_remote_url = cover
-  # end
-  
-  # def do_download_remote_image
-  #   io = open(URI.parse(cover_remote_url))
-  #   def io.original_filename; base_uri.path.split('/').last; end
-  #   io.original_filename.blank? ? nil : io
-  # rescue # catch url errors with validations instead of exceptions (Errno::ENOENT, OpenURI::HTTPError, etc...)
-  # end
+  mount_uploader :cover, CoverUploader
 
 end

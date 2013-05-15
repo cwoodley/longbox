@@ -16,6 +16,7 @@
 
 # Ignore uploads
 /public/system/*
+/public/uploads/*
 
 # OS generated files #
 ######################

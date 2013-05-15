@@ -1,13 +1,10 @@
 Comics::Application.routes.draw do
   resources :volumes
 
-  resources :series do
-    resources :issues, :controller => "series/issues"
-  end
+  resources :series
 
   resources :issues
-
-  root :to => "<model>#<controller>"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -11,18 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130509074427) do
+ActiveRecord::Schema.define(:version => 20130515121752) do
 
   create_table "issues", :force => true do |t|
     t.integer  "issue_number"
     t.integer  "series_id"
     t.boolean  "own"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
-    t.string   "cover_file_name"
-    t.string   "cover_content_type"
-    t.integer  "cover_file_size"
-    t.datetime "cover_updated_at"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.string   "cover"
   end
 
   add_index "issues", ["series_id", "created_at"], :name => "index_issues_on_series_id_and_created_at"
