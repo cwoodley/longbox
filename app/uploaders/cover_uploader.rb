@@ -3,6 +3,7 @@
 class CoverUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
+  include CarrierWave::Processing::RMagick
 
   #storage :file
   storage :fog
@@ -24,6 +25,17 @@ class CoverUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_limit => [100, 100]
+    process :quality => 70
+  end
+
+  version :medium do
+    process :resize_to_limit => [300, 300]
+    process :quality => 90
+  end
+
+  version :large do
+    process :resize_to_limit => [600, 600]
+    process :quality => 90
   end
 
   # Cache dir for deploying to Heroku

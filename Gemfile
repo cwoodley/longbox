@@ -8,7 +8,9 @@ gem 'unicorn'
 gem 'ratchet-rails'
 gem "rmagick"
 gem "carrierwave"
+gem 'carrierwave-processing'
 gem "fog"
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
