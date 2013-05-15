@@ -7,7 +7,7 @@ Comics::Application.routes.draw do
 
   resources :issues
 
-  root :to => redirect('/series')
+  root :to => "<model>#<controller>"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
