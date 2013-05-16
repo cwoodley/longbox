@@ -23,6 +23,6 @@ class Series < ActiveRecord::Base
   end
 
   def generate_slug
-    self.slug ||= name.parameterize
+    self.slug ||= title.parameterize
   end
 end

@@ -9,7 +9,7 @@
 <% end %>
 
 <ul class="list">
-<% @all_series.each do |series| %>
+<% @series.each do |series| %>
   <li>
   <%= link_to(series) do %>
     <%= series.title %> <span class="chevron"></span> <span class="count"><%= series.issues.count %></span>
@@ -17,7 +17,7 @@
   </li>
 <% end %>
 </ul>
-<%= will_paginate @all_series %>
+<%= will_paginate @series %>
 <br />
 
 <%= link_to 'New Series', new_series_path %> | <%= link_to 'New Issue', new_issue_path %>
