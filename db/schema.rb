@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516071525) do
+ActiveRecord::Schema.define(:version => 20130516085837) do
 
   create_table "issues", :force => true do |t|
     t.integer  "issue_number"
@@ -19,12 +19,9 @@ ActiveRecord::Schema.define(:version => 20130516071525) do
     t.boolean  "own"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.string   "cover"
-    t.string   "slug"
   end
 
   add_index "issues", ["series_id", "created_at"], :name => "index_issues_on_series_id_and_created_at"
-  add_index "issues", ["slug"], :name => "index_issues_on_slug"
 
   create_table "series", :force => true do |t|
     t.string   "title"
@@ -34,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20130516071525) do
     t.string   "slug"
   end
 
-  add_index "series", ["slug"], :name => "index_series_on_slug", :unique => true
+  add_index "series", ["slug"], :name => "index_series_on_slug"
   add_index "series", ["title"], :name => "index_series_on_title", :unique => true
 
   create_table "volumes", :force => true do |t|
