@@ -10,6 +10,7 @@ gem "rmagick"
 gem "carrierwave"
 gem 'carrierwave-processing'
 gem "fog"
+gem "friendly_id", "~> 4.0.9"
 
 
 # Bundle edge Rails instead:

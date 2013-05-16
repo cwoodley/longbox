@@ -3,10 +3,7 @@ class Series < ActiveRecord::Base
   has_many :issues
   has_many :volumes
   
-  validates :title, presence: true, uniqueness: true
-  validates :slug, uniqueness: true, presence: true,
-                 exclusion: {in: %w[signup login]}
-  before_validation :generate_slug               
+  validates :title, presence: true, uniqueness: true        
   
   before_save { |series| series.title = title.capitalize }
 
@@ -18,11 +15,6 @@ class Series < ActiveRecord::Base
     end
   end
   
-  def to_param
-    slug # or "#{id}-#{name}".parameterize
-  end
-
-  def generate_slug
-    self.slug ||= title.parameterize
-  end
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end

@@ -13,9 +13,8 @@
     <% if @series.issues.any? %>
       <h3>Issues (<%= @series.issues.count %>)</h3>
       <ol class="microposts">
-        <%= render @issues %>
+        <%= render @series.issues %>
       </ol>
-      <%= will_paginate @issues %>
     <% end %>
 
 

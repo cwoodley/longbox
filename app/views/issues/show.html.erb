@@ -16,5 +16,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', issues_path(@issue) %>
+<%= link_to 'Edit', edit_series_issue_path(@issue.series.slug,@issue.issue_number) %> |
+<%= link_to 'Back', series_path(@issue.series.slug) %>

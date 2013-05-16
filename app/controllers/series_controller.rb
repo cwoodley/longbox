@@ -1,7 +1,5 @@
 class SeriesController < ApplicationController
 
-  before_filter :find_series, only: [:show, :edit, :update, :destroy]
-
   # GET /series
   # GET /series.json
   def index
@@ -18,8 +16,8 @@ class SeriesController < ApplicationController
   # GET /series/1
   # GET /series/1.json
   def show
-    # @series = Series.find(params[:id])
-    @issues = @series.issues.paginate(page: params[:page])
+    @series = Series.find(params[:id])
+    @issue = @series.issues
   end
 
   # GET /series/new
@@ -69,13 +67,6 @@ class SeriesController < ApplicationController
   def destroy
     @series.destroy
     redirect_to series_url
-    end
   end
 
-
-private
-
-  def find_series
-    @series = Series.find_by_slug!(params[:id].split("/").last)
-  end
-
+end

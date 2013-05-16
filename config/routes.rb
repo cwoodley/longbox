@@ -1,8 +1,6 @@
 Comics::Application.routes.draw do
   resources :volumes
 
-  #match 'series/:slug/issues/' => 'series/issues#index'
-
   resources :series do 
     resources :issues, :controller => "series/issues"
   end

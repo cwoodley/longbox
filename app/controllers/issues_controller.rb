@@ -3,8 +3,8 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    if params[:slug]
-      @issues = Series.find_by_slug(params[:slug]).issues
+    if params[:id]
+      @issues = Series.find(params[:id]).issues
     else
       @issues = Issue.all
     end
@@ -18,8 +18,8 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
-    
-    @issue = Issue.find_by_issue_number!(params[:id])
+    @series_id = Series.where(:slug => params[:series_id])
+    @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,7 +40,8 @@ class IssuesController < ApplicationController
 
   # GET /issues/1/edit
   def edit
-    @issue = Issue.find(params[:id])
+    @series_id = Series.where(:slug => params[:series_id])
+    @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
   end
 
   # POST /issues
