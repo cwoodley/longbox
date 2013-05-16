@@ -6,5 +6,4 @@ class Issue < ActiveRecord::Base
   validates(:series_id, presence: true)
 
   mount_uploader :cover, CoverUploader
-
 end

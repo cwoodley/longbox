@@ -1,8 +1,12 @@
 Comics::Application.routes.draw do
-  resources :volumes
+  # resources :volumes
 
-  resources :series
+  match 'series/:slug/issues/' => 'series/issues#index'
 
+  resources :series do 
+    resources :issues, :controller => "series/issues"
+  end
+  
   resources :issues
   
   # The priority is based upon order of creation:

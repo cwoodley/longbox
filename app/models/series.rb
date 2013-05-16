@@ -1,5 +1,5 @@
 class Series < ActiveRecord::Base
-  attr_accessible :pull, :title
+  attr_accessible :pull, :title, :slug
   has_many :issues
   has_many :volumes
   

@@ -1,9 +1,10 @@
 class IssuesController < ApplicationController
+
   # GET /issues
   # GET /issues.json
   def index
-    if params[:series_id]
-      @issues = Series.find(params[:series_id]).issues
+    if params[:slug]
+      @issues = Series.find_by_slug(params[:slug]).issues
     else
       @issues = Issue.all
     end
@@ -18,7 +19,7 @@ class IssuesController < ApplicationController
   # GET /issues/1.json
   def show
     
-      @issue = Issue.find(params[:id])
+    @issue = Issue.find_by_issue_number!(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -85,4 +86,5 @@ class IssuesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
