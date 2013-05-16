@@ -1,9 +1,12 @@
 class SeriesController < ApplicationController
+
+  before_filter :find_series, only: [:show, :edit, :update, :destroy]
+
   # GET /series
   # GET /series.json
   def index
-	@series = Series.search(params[:search]).paginate(page: params[:page])
-	@pull_list = @series.where(:pull=>true).all
+	@all_series = Series.search(params[:search]).paginate(page: params[:page])
+	# @pull_list = @series.where(:pull=>true).all
 	@issues = Issue.all
     respond_to do |format|
       format.html # index.html.erb
@@ -14,12 +17,8 @@ class SeriesController < ApplicationController
   # GET /series/1
   # GET /series/1.json
   def show
-    @series = Series.find(params[:id])
+    # @series = Series.find(params[:id])
     @issues = @series.issues.paginate(page: params[:page])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @series }
-    end
   end
 
   # GET /series/new
@@ -35,7 +34,7 @@ class SeriesController < ApplicationController
 
   # GET /series/1/edit
   def edit
-    @series = Series.find(params[:id])
+    # @series = Series.find(params[:id])
   end
 
   # POST /series
@@ -57,28 +56,25 @@ class SeriesController < ApplicationController
   # PUT /series/1
   # PUT /series/1.json
   def update
-    @series = Series.find(params[:id])
-
-    respond_to do |format|
-      if @series.update_attributes(params[:series])
-        format.html { redirect_to @series, notice: 'Series was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @series.errors, status: :unprocessable_entity }
-      end
+    if @series.update_attributes(params[:series])
+      redirect_to @series, notice: "Page was successfully updated."
+    else
+      render :edit
     end
   end
 
   # DELETE /series/1
   # DELETE /series/1.json
   def destroy
-    @series = Series.find(params[:id])
     @series.destroy
-
-    respond_to do |format|
-      format.html { redirect_to series_index_url }
-      format.json { head :no_content }
+    redirect_to series_url
     end
   end
-end
+
+
+private
+
+  def find_series
+    @series = Series.find_by_slug!(params[:id].split("/").last)
+  end
+

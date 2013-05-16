@@ -1,49 +1,3 @@
-<!-- <h1>New Comics</h1>
-<table>
-<%
-	@issues.each do |issue|
- 		if issue.own == false
-%>
- <tr>
-    <td align="center">
-
-      <%= link_to (image_tag(issue.cover.url(:thumb))), issue %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to issue.series.title, issue %> <%= link_to issue.issue_number, issue %> <%= link_to 'Edit', edit_issue_path(issue) %>
-    </td>
-  </tr>
-<% 
-		end
-	end  		
-%>
-</table>
-
-<h1>Pull List</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Pull</th>
-    <th>Issues</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @pull_list.each do |series|%>
-  <tr>
-    <td><%= link_to series.title, series %></td>
-    <td><%= series.pull %></td>
-    <td><%= series.issues.count %></td>
-    <td><%= link_to 'Show', series %></td>
-    <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
-</table> -->
-
 <h1>Series in Collection</h1>
 <%= form_tag("/series", :method => "get") do %>
   <div class="input-group">
@@ -55,7 +9,7 @@
 <% end %>
 
 <ul class="list">
-<% @series.each do |series| %>
+<% @all_series.each do |series| %>
   <li>
   <%= link_to(series) do %>
     <%= series.title %> <span class="chevron"></span> <span class="count"><%= series.issues.count %></span>
@@ -63,7 +17,7 @@
   </li>
 <% end %>
 </ul>
-<%= will_paginate @series %>
+<%= will_paginate @all_series %>
 <br />
 
 <%= link_to 'New Series', new_series_path %> | <%= link_to 'New Issue', new_issue_path %>
