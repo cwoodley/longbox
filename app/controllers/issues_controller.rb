@@ -19,6 +19,7 @@ class IssuesController < ApplicationController
   # GET /issues/1.json
   def show
     @series_id = Series.where(:slug => params[:series_id])
+    
     @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
 
     respond_to do |format|

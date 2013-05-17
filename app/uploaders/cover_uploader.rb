@@ -4,9 +4,13 @@ class CoverUploader < CarrierWave::Uploader::Base
 
   include CarrierWave::RMagick
   include CarrierWave::Processing::RMagick
+  
+  if Rails.env.development? or Rails.env.cucumber?
+    storage :file
+  else 
+    storage :fog
+  end
 
-  #storage :file
-  storage :fog
   include CarrierWave::MimeTypes
   process :set_content_type
 
@@ -41,5 +45,9 @@ class CoverUploader < CarrierWave::Uploader::Base
   # Cache dir for deploying to Heroku
   def cache_dir
     "#{Rails.root}/tmp/uploads"
+  end
+
+    def filename
+    super.chomp(File.extname(super)) + '.jpg'
   end
 end
