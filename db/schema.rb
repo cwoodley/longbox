@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130517012541) do
     t.string   "slug"
   end
 
-  add_index "series", ["slug"], :name => "index_series_on_slug"
+  add_index "series", ["slug"], :name => "index_series_on_slug", :unique => true
   add_index "series", ["title"], :name => "index_series_on_title", :unique => true
 
   create_table "volumes", :force => true do |t|

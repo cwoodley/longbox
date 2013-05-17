@@ -2,7 +2,7 @@ Comics::Application.routes.draw do
   resources :volumes
 
   resources :series do 
-    resources :issues, :controller => "series/issues"
+    resources :issues
   end
   
   resources :issues

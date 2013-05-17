@@ -1,4 +1,5 @@
 class IssuesController < ApplicationController
+  before_filter :series_id
 
   # GET /issues
   # GET /issues.json
@@ -18,8 +19,6 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
-    @series_id = Series.where(:slug => params[:series_id])
-    
     @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
 
     respond_to do |format|
@@ -41,7 +40,6 @@ class IssuesController < ApplicationController
 
   # GET /issues/1/edit
   def edit
-    @series_id = Series.where(:slug => params[:series_id])
     @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
   end
 
@@ -52,7 +50,7 @@ class IssuesController < ApplicationController
 
     respond_to do |format|
       if @issue.save
-        format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
+        format.html { redirect_to series_issue_path(@issue.series,@issue.issue_number), notice: 'Issue was successfully created.' }
         format.json { render json: @issue, status: :created, location: @issue }
       else
         format.html { render action: "new" }
@@ -68,7 +66,7 @@ class IssuesController < ApplicationController
 
     respond_to do |format|
       if @issue.update_attributes(params[:issue])
-        format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
+        format.html { redirect_to series_issue_path(@issue.series,@issue.issue_number), notice: 'Issue was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -84,9 +82,15 @@ class IssuesController < ApplicationController
     @issue.destroy
 
     respond_to do |format|
-      format.html { redirect_to issues_url }
+      format.html { redirect_to series_path(@issue.series) }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def series_id
+    @series_id = Series.where(:slug => params[:series_id])
   end
 
 end

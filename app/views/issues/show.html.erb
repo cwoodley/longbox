@@ -16,5 +16,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_series_issue_path(@issue.series.slug,@issue.issue_number) %> |
+<%= link_to 'Edit', edit_series_issue_path(@issue.series,@issue.issue_number) %> |
+<%= link_to 'Delete', @issue, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', series_path(@issue.series.slug) %>

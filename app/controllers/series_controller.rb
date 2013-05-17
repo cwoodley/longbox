@@ -33,7 +33,7 @@ class SeriesController < ApplicationController
 
   # GET /series/1/edit
   def edit
-    # @series = Series.find(params[:id])
+    @series = Series.find(params[:id])
   end
 
   # POST /series
