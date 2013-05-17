@@ -18,8 +18,8 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
-    @series_id = Series.where(:slug => params[:series_id])
-    @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
+    @issue = Issue.find(params[:id])
+    @series = Series.find(@issue.series_id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,8 +40,7 @@ class IssuesController < ApplicationController
 
   # GET /issues/1/edit
   def edit
-    @series_id = Series.where(:slug => params[:series_id])
-    @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
+    @issue = Issue.find(params[:id])
   end
 
   # POST /issues

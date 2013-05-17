@@ -30,3 +30,6 @@ ehthumbs.db
 Thumbs.db
 
 .sass-cache
+.powrc
+
+.rvmrc
