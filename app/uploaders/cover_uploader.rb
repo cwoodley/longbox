@@ -5,7 +5,7 @@ class CoverUploader < CarrierWave::Uploader::Base
   include CarrierWave::RMagick
   include CarrierWave::Processing::RMagick
   
-  if Rails.env.development? or Rails.env.cucumber?
+  if Rails.env.development?
     storage :file
   else 
     storage :fog
@@ -47,7 +47,7 @@ class CoverUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/tmp/uploads"
   end
 
-    def filename
+  def filename
     super.chomp(File.extname(super)) + '.jpg'
   end
 end
