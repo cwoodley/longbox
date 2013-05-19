@@ -3,9 +3,8 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-	#@all_series = Series.search(params[:search]).paginate(page: params[:page])
-	# @pull_list = @series.where(:pull=>true).all
   @series = Series.search(params[:search]).paginate(page: params[:page])
+  @pull_list = Series.where(:pull=>true).all 
 	@issues = Issue.all
     respond_to do |format|
       format.html # index.html.erb
@@ -55,6 +54,7 @@ class SeriesController < ApplicationController
   # PUT /series/1
   # PUT /series/1.json
   def update
+    @series = Series.find(params[:id])
     if @series.update_attributes(params[:series])
       redirect_to @series, notice: "Page was successfully updated."
     else

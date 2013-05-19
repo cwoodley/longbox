@@ -200,7 +200,6 @@ DEPENDENCIES
   jquery-rails
   json
   paperclip
-  pg
   rails (= 3.2.13)
   ratchet-rails
   rmagick

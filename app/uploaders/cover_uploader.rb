@@ -47,7 +47,7 @@ class CoverUploader < CarrierWave::Uploader::Base
     "#{Rails.root}/tmp/uploads"
   end
 
-  def filename
-    super.chomp(File.extname(super)) + '.jpg'
-  end
+  # def filename
+  #   super.chomp(File.extname(super)) + '.jpg'
+  # end
 end
