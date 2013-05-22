@@ -1,26 +1,27 @@
-<%= form_for(@series) do |f| %>
-  <% if @series.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:</h2>
+<%= simple_form_for @series, :html => { :class => 'form-horizontal' } do |f| %>
+<fieldset>
+  <legend><%= controller.action_name.capitalize %> Series</legend>
 
+  <% if @series.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:
       <ul>
       <% @series.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
-  <div class="input-group">
-    <div class="input-row">
-      <%= f.label :title %><br />
-      <%= f.text_field :title %>
-    </div>
-    <div class="input-row">
-      <%= f.label :pull %><br />
-      <%= f.check_box :pull %>
-    </div>
+
+  <%= f.input :title %>
+  <%= f.input :pull, :as => :boolean %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to 'Cancel', root_path, :class => 'btn' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</fieldset>
 <% end %>

@@ -1,23 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
+<h1>
   <%= @series.title %>
-</p>
+  <% if @series.pull? %>
+  <span class="label label-success"><i class="icon-bookmark icon-white"></i></span>
+  <% end -%>
+</h1>
 
-<p>
-  <b>Pull:</b>
-  <%= @series.pull %>
-</p>
+  <% if @series.issues.any? %>
+    <h3>Issues In Series (<%= @series.issues.count %>)</h3>
+    <ol class="thumbnails series-issues">
+      <%= render @series.issues %>
+    </ol>
+  <% end %>
 
-    <% if @series.issues.any? %>
-      <h3>Issues (<%= @series.issues.count %>)</h3>
-      <ol class="microposts">
-        <%= render @series.issues %>
-      </ol>
-    <% end %>
-
-
-<%= link_to 'Edit', edit_series_path(@series) %> |
-<%= link_to 'New Issue', new_series_issue_path(@series) %> | 
-<%= link_to 'Back', series_index_path %>
+<div class="btn-group">
+  <button class="btn"><%= link_to 'Edit This Series', edit_series_path(@series) %></button>
+  <button class="btn"><%= link_to 'Add New Issue', new_series_issue_path(@series) %></button>
+</div>
