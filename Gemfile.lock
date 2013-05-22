@@ -126,9 +126,6 @@ GEM
       thor (>= 0.14.6, < 2.0)
     raindrops (0.11.0)
     rake (10.0.4)
-    ratchet-rails (0.0.3)
-      actionpack (>= 3.0)
-      railties (>= 3.0)
     rdoc (3.12.2)
       json (~> 1.4)
     rmagick (2.13.2)
@@ -201,7 +198,6 @@ DEPENDENCIES
   json
   pg
   rails (= 3.2.13)
-  ratchet-rails
   rmagick
   rspec-rails (= 2.11.0)
   sass-rails (~> 3.2.3)
