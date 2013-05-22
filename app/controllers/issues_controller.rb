@@ -1,6 +1,7 @@
 class IssuesController < ApplicationController
   before_filter :series_id
-
+  before_filter :authenticate_user!, except: [:index, :show]
+  
   # GET /issues
   # GET /issues.json
   def index

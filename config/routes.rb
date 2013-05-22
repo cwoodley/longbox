@@ -1,4 +1,6 @@
 Comics::Application.routes.draw do
+  devise_for :users
+  
   resources :volumes
 
   resources :series do 
@@ -6,6 +8,8 @@ Comics::Application.routes.draw do
   end
   
   resources :issues
+
+  root :to => "series#index"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
