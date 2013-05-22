@@ -4,15 +4,12 @@ gem 'rails', '3.2.13'
 gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'aws-sdk'
-gem 'unicorn'
 gem 'ratchet-rails'
 gem "rmagick"
 gem "carrierwave"
 gem 'carrierwave-processing'
 gem "fog"
 gem "friendly_id", "~> 4.0.9"
-gem "paperclip"
-
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -23,6 +20,7 @@ group :development do
 end
 group :production do
   gem 'pg'
+  gem 'unicorn'
 end
 
 group :test do
