@@ -15,13 +15,17 @@ body {padding:60px 0;}
 @import "bootstrap-responsive";
 
 .btn-group {
-	a {
-		color: $textColor;
-		text-decoration: none;
-	}
+  a {
+    color: $textColor;
+    text-decoration: none;
+  }
 }
 
 .series-issues {
+  text-align: center;
+}
 
-	text-align: center;
+.label-title {
+  display: block;
+  font-weight: bold;
 }

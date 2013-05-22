@@ -18,7 +18,7 @@
 
   <%= f.input :issue_number %>
  
-  <%=f.input :series, collection: @series_id, prompt: "Please select a series" %>
+  <%= f.association :series, label_method: :title, value_method: :id, prompt: "Select a Series" %>
   
   <%= f.input :own, :as => :boolean %>
 
