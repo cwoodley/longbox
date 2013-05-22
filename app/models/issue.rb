@@ -6,4 +6,8 @@ class Issue < ActiveRecord::Base
   validates(:series_id, presence: true)
 
   mount_uploader :cover, CoverUploader
+
+  scope :owned, :conditions => {:own => true}
+  scope :wanted, :conditions => {:own => false}
+
 end

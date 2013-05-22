@@ -48,6 +48,7 @@ class IssuesController < ApplicationController
   # POST /issues.json
   def create
     @issue = Issue.new(params[:issue])
+    @series = Series.where(:slug => params[:series_id])
 
     respond_to do |format|
       if @issue.save

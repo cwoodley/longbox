@@ -5,6 +5,7 @@ class SeriesController < ApplicationController
   def index
   @series = Series.search(params[:search]).paginate(page: params[:page])
   @pull_list = Series.where(:pull=>true).all 
+  @wanted_items = Issue.wanted
 	@issues = Issue.all
     respond_to do |format|
       format.html # index.html.erb

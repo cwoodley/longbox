@@ -1,25 +1,9 @@
 <h1>New Comics</h1>
-<table>
-<%
-@issues.each do |issue|
-  if issue.own == false
-%>
- <tr>
-    <td align="center">
-
-      <%= link_to (image_tag(issue.cover.url(:thumb))), issue %>
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <%= link_to "#{issue.series.title} #{issue.issue_number}", series_issue_path(issue.series.slug, issue.issue_number) %> <%= link_to 'Edit', edit_issue_path(issue) %>
-    </td>
-  </tr>
-<%
-end
-end
-%>
-</table>
+<% if @wanted_items.any? %>
+  <ol class="thumbnails series-issues">
+    <%= render :partial => "issues/issue", :collection => @wanted_items, :locals => { :issue => @issue } %>
+  </ol>
+<% end %>
 
 <h1>Pull List</h1>
 
