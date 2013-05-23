@@ -20,7 +20,7 @@
   <tbody>
     <% @pull_list.each do |series|%>
     <tr>
-      <td><%= link_to series.title, series %></td>
+      <td><%= link_to series.title.titleize, series %></td>
       <td><%= series.pull %></td>
       <td><%= series.issues.count %></td>
       <td><%= link_to 'Show', series %></td>
@@ -45,7 +45,7 @@
 <% @series.each do |series| %>
   <li>
   <%= link_to(series) do %>
-    <%= series.title %> <span class="chevron"></span> <span class="count"><%= series.issues.count %></span>
+    <%= series.title.titleize %> <span class="chevron"></span> <span class="count"><%= series.issues.count %></span>
   <% end %>
   </li>
 <% end %>
