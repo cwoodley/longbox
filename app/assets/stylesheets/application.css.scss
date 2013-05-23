@@ -11,7 +11,10 @@
  */
 
 @import "bootstrap";
-body {padding:60px 0;}
+body {
+	background:url(image_path('agsquare_@2X.png')) 0 0;
+	padding:60px 0;
+}
 @import "bootstrap-responsive";
 
 .btn-group {
@@ -28,4 +31,13 @@ body {padding:60px 0;}
 .label-title {
   display: block;
   font-weight: bold;
+}
+
+#footer {
+	background-color:$grayLighter;
+	height:60px;
+
+	p {
+		margin:20px;
+	}
 }

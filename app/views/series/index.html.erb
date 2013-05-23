@@ -5,27 +5,30 @@
   </ol>
 <% end %>
 
-<h1>Pull List</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Pull</th>
-    <th>Issues</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-  <% @pull_list.each do |series|%>
-  <tr>
-    <td><%= link_to series.title, series %></td>
-    <td><%= series.pull %></td>
-    <td><%= series.issues.count %></td>
-    <td><%= link_to 'Show', series %></td>
-    <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <% end %>
+<table class="table table-striped">
+  <legend>Pull List</legend>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Pull</th>
+      <th>Issues</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pull_list.each do |series|%>
+    <tr>
+      <td><%= link_to series.title, series %></td>
+      <td><%= series.pull %></td>
+      <td><%= series.issues.count %></td>
+      <td><%= link_to 'Show', series %></td>
+      <td><%= link_to 'Edit', edit_series_path(series) %></td>
+      <td><%= link_to 'Destroy', series, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 <br />
 <h1>Series in Collection</h1>
@@ -33,12 +36,12 @@
   <div class="input-group">
     <div class="input-row">
 		<%= search_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil, :class => "button" %>
+    <%= submit_tag "Search", :name => nil, :class => "btn" %>
     </div>
 	</div>
 <% end %>
 
-<ul class="list">
+<ul class="nav nav-tabs nav-stacked">
 <% @series.each do |series| %>
   <li>
   <%= link_to(series) do %>
