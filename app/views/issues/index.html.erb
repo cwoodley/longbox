@@ -1,27 +1,8 @@
 <h1>Listing issues</h1>
 
-<table>
-  <tr>
-    <th></th>
-    <th>Issue number</th>
-    <th>Series</th>
-    <th>Own</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @issues.each do |issue| %>
-  <tr>
-    <td><%= image_tag issue.cover.url(:thumb) %></td>
-    <td><%= issue.issue_number %></td>
-    <td><%= issue.series_id %></td>
-    <td><%= issue.own %></td>
-    <td><%= link_to 'Show', series_issue_path(issue.series.id,issue.id) %></td>
-    <td><%= link_to 'Edit', edit_series_issue_path(issue.series.id,issue.id) %></td>
-    <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <ul class="thumbnails series-issues">
+    <%= render :partial => "issues/issue", :collection => @issues, :locals => { :issue => @issue } %>
+  </ul>
 </table>
 
 <br />

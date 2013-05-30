@@ -7,7 +7,7 @@
   %>
     <%  %>
     <% if !issue.own? %>
-    <span class="label label-important">Not in collection</span>
+    <span class="label label-important">Missing</span>
     <% end -%>
     <span class="label-title"><%= issue.series.title %> #<%= issue.issue_number %></span>
   </div>
