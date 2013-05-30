@@ -1,4 +1,5 @@
 class Series < ActiveRecord::Base
+
   attr_accessible :pull, :title, :slug
   has_many :issues
   has_many :volumes
@@ -14,7 +15,8 @@ class Series < ActiveRecord::Base
       scoped
     end
   end
-  
+
   extend FriendlyId
   friendly_id :title, use: :slugged
+
 end

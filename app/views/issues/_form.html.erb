@@ -1,37 +1,33 @@
-<%= form_for @issue, :html => {:multipart => true} do |f| %>
-  <% if @issue.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+<%= simple_form_for @issue, :html => { :class => 'form-horizontal' } do |f| %>
+<fieldset>
+  <legend><%= controller.action_name.capitalize %> Issue</legend>
 
+  <% if @issue.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:
       <ul>
       <% @issue.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :issue_number %><br />
-    <%= f.number_field :issue_number %>
+  <%= f.input :issue_number %>
+ 
+  <%= f.association :series, label_method: :title, value_method: :id, prompt: "Select a Series" %>
+  
+  <%= f.input :own, :as => :boolean %>
+
+  <%= f.input :cover, :as => :file %>
+  <%= f.input :remote_cover_url %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= submit_tag 'Reset', :type => :reset, :class => "btn btn-danger" %>
   </div>
-  <div class="field">
-    <%= f.label :series_id %><br />
-    <%= collection_select(:issue, :series_id, Series.all, :id, :title, :prompt => 'Please select a series') %>
-  </div>
-  <div class="field">
-    <%= f.label :own %><br />
-    <%= f.check_box :own %>
-  </div>
-	<div class="field">
-	  <%= f.label :cover %><br />
-    Upload a photo: <%= f.file_field :cover %>
-	</div>  
-  <div class="field">
-    <%= f.label :remote_cover_url %><br />
-    <%= f.text_field :remote_cover_url %>
-  </div>  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</fieldset>
 <% end %>

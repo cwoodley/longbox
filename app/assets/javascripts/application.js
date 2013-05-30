@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-//= require_tree .
+//= //require bootstrap-transition
+//= //require bootstrap-button
+//= //require bootstrap-collapse
+//= //require bootstrap-dropdown
+//= //require_tree .

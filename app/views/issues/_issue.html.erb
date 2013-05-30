@@ -1,4 +1,14 @@
-<li>
-  <%= link_to issue.issue_number, series_issue_path(issue.series, issue.issue_number) %>
-  <%= issue.own %>
+<li class="span2">
+  <div>
+  <%= link_to (
+      image_tag issue.cover.url(:medium).to_s, :class => "thumbnail"),
+      series_issue_path(issue.series, issue.issue_number
+    )
+  %>
+    <%  %>
+    <% if !issue.own? %>
+    <span class="label label-important">Not in collection</span>
+    <% end -%>
+    <span class="label-title"><%= issue.series.title %> #<%= issue.issue_number %></span>
+  </div>
 </li>

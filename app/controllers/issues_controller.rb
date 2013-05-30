@@ -1,6 +1,7 @@
 class IssuesController < ApplicationController
   before_filter :series_id
-
+  before_filter :authenticate_user!, except: [:index, :show]
+  
   # GET /issues
   # GET /issues.json
   def index
@@ -47,6 +48,7 @@ class IssuesController < ApplicationController
   # POST /issues.json
   def create
     @issue = Issue.new(params[:issue])
+    @series = Series.where(:slug => params[:series_id])
 
     respond_to do |format|
       if @issue.save
