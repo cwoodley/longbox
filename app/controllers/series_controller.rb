@@ -19,7 +19,6 @@ class SeriesController < ApplicationController
     @series = Series.find(params[:id])
     @issue = @series.issues
 
-    drop_breadcrumb("Series", series_index_path)
     drop_breadcrumb(@series.title)
   end
 
