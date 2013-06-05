@@ -12,6 +12,8 @@ gem "friendly_id", "~> 4.0.9"
 gem "devise"
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'simple_form'
+gem 'breadcrumbs_on_rails'
+gem 'bootstrap_helper'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

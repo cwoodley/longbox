@@ -21,7 +21,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="touch-icons/apple-touch-icon-72x72.png">
   <link rel="apple-touch-icon-precomposed" sizes="57x57" href="touch-icons/apple-touch-icon-57x57.png">
 </head>
-<body>
+<%= render_body_tag %> 
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -66,6 +66,7 @@
         <h2>Latest</h2>
       </div>
       <div class="span9">
+        <%= render_breadcrumb %>
         <% flash.each do |name, msg| %>
         <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
           <a class="close" data-dismiss="alert">x</a>

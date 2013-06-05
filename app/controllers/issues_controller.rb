@@ -22,6 +22,10 @@ class IssuesController < ApplicationController
   def show
     @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
 
+    @series = Series.where(:slug => params[:series_id]).first
+    drop_breadcrumb(@series.title)
+    drop_breadcrumb(@issue.issue_number)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @issue }
