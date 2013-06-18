@@ -1,5 +1,6 @@
 <li class="span3">
   <div>
+    <div class="spinner"></div>
   <%= link_to (
       image_tag issue.cover.url(:medium).to_s, :class => "thumbnail"),
       series_issue_path(issue.series, issue.issue_number

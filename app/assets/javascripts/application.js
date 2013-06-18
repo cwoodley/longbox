@@ -18,6 +18,8 @@
 //= require bootstrap-dropdown
 //= require jquery.purr
 //= require best_in_place
-//= require custom
 //= require bootstrap.file-input
+//= require spin
+//= require jquery.spin
+//= require custom
 //= //require_tree .
