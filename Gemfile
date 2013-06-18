@@ -14,6 +14,7 @@ gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'simple_form'
 gem 'bootstrap_helper'
 gem 'best_in_place'
+gem 'turbolinks'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
