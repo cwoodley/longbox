@@ -17,5 +17,8 @@
 //= require bootstrap-collapse
 //= require bootstrap-dropdown
 //= require switch
+//= require jquery.purr
+//= require best_in_place
 //= require custom
+//= require bootstrap.file-input
 //= //require_tree .

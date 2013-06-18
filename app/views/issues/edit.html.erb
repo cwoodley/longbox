@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @issue %> |
-<%= link_to 'Back', issues_path %>
+<div class="btn-group">
+<%= link_to 'Back to Series', series_path(@issue.series.slug), :class => "btn" %> |
+<%= link_to 'Cancel', series_issue_path(@issue.series,@issue.issue_number), :class => "btn" %>
+</div>

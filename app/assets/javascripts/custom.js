@@ -1,3 +1,4 @@
 $(document).ready(function(){
-$(':checkbox').iphoneStyle();	
+
+	$('.best_in_place').best_in_place();
 });
