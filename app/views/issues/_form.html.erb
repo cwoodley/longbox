@@ -19,17 +19,28 @@
   <%= f.input :issue_number %>
  
   <%= f.association :series, label_method: :title, value_method: :id, prompt: "Select a Series" %>
-  
+
+  <% if params[:action] == "edit" %>
   <div class="control-group">
     <label class="control-label">Own</label>
     <div class="controls">
       <%= best_in_place @issue, :own, :type => :checkbox, :collection => [raw("<div class='btn-group'><span class='js-noaction btn btn-danger'>No</span><span class='js-noaction btn'>Yes</span></div>"), raw("<div class='btn-group'><span class='js-noaction btn'>No</span><span class='js-noaction btn btn-success'>Yes</span></div>")] %>
     </div>
   </div>
-
-  <%= f.input :cover, :as => :file %>
+  <% elsif params[:action] == "new" %>
+  <%= f.input :own, :as => :boolean %>
+  <% end %>
 
   <div class="control-group">
+      <label class="file optional control-label" for="issue_cover">Cover</label>
+      <div class="controls">  
+        <%= f.input_field :cover, :as => :file %>
+        <span class="help-block"><small><a href="#" id="remove_cover_url-toggle">Or upload via url instead</a></small></span>
+      </div>
+  </div> 
+
+
+  <div id="remove_cover_url-group" class="control-group hidden">
     <label class="url optional control-label" for="issue_remote_cover_url">Remote cover url</label>
     <div class="controls">
       <div class="input-prepend">
