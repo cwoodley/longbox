@@ -63,10 +63,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="span3">
-        <h2>Latest</h2>
-      </div>
-      <div class="span9">
+      <div class="span12">
         <%= render_breadcrumb %>
         <% flash.each do |name, msg| %>
         <div class="alert alert-<%= name == :notice ? "success" : "error" %>">

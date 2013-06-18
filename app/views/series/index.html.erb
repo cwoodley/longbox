@@ -40,11 +40,11 @@
 </div>  
 <% end %>
 
-<ul class="nav nav-tabs nav-stacked">
+<ul id="collection-list" class="nav nav-tabs nav-stacked">
 <% @series.each do |series| %>
   <li>
   <%= link_to(series) do %>
-    <%= series.title.titleize %> <span class="chevron"></span> <span class="count"><%= series.issues.count %></span>
+    <%= series.title.titleize %> <span class="chevron"></span> <span class="badge"><%= series.issues.count %> <i class="icon-white icon-chevron-right"></i></span>
   <% end %>
   </li>
 <% end %>

@@ -1,18 +1,17 @@
 <h1>
   <%= @series.title %>
   <% if @series.pull? %>
-  <span class="label label-success"><i class="icon-bookmark icon-white"></i></span>
+  <!-- <span class="label label-success"><i class="icon-bookmark icon-white"></i></span> -->
   <% end -%>
 </h1>
 
   <% if @series.issues.any? %>
-    <h3>Issues In Series (<%= @series.issues.count %>)</h3>
     <ol class="thumbnails series-issues">
       <%= render @series.issues %>
     </ol>
   <% end %>
 
 <div class="btn-group">
-  <button class="btn"><%= link_to 'Edit This Series', edit_series_path(@series) %></button>
-  <button class="btn"><%= link_to 'Add New Issue', new_series_issue_path(@series) %></button>
+  <%= link_to 'Edit This Series', edit_series_path(@series), :class => "btn" %>
+  <%= link_to 'Add New Issue', new_series_issue_path(@series), :class => "btn" %>
 </div>
