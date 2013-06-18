@@ -29,23 +29,34 @@ class CoverUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_limit => [100, 100]
-    process :quality => 70
+    process :optimize
   end
 
   version :medium do
     process :resize_to_limit => [300, 300]
-    process :quality => 90
+    process :optimize
   end
 
   version :large do
     process :resize_to_limit => [600, 600]
-    process :quality => 90
+    process :optimize
   end
 
   # Cache dir for deploying to Heroku
   def cache_dir
     "#{Rails.root}/tmp/uploads"
   end
+
+  def optimize
+  manipulate! do |img, index, options|
+    options[:write] = {
+      :quality => 90, # Change the quality to 90%
+      :depth => 8, # Set the depth to 8 bits
+      :interlace => "Magick::PlaneInterlace" # Add progressive support for JPEG
+    }
+    img.strip! # Remove profile data
+  end
+end
 
   # def filename
   #   super.chomp(File.extname(super)) + '.jpg'
