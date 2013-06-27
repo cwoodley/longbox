@@ -68,7 +68,7 @@ class IssuesController < ApplicationController
   # PUT /issues/1
   # PUT /issues/1.json
   def update
-    @issue = Issue.find(params[:id])
+    @issue = Issue.find(:first, :conditions => {:series_id => @series_id, :issue_number => params[:id]})
 
     respond_to do |format|
       if @issue.update_attributes(params[:issue])
