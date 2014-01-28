@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522020432) do
+ActiveRecord::Schema.define(:version => 20140128022314) do
 
   create_table "issues", :force => true do |t|
     t.integer  "issue_number"
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130522020432) do
     t.boolean  "own"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "cover"
   end
 
   add_index "volumes", ["series_id", "created_at"], :name => "index_volumes_on_series_id_and_created_at"
