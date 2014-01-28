@@ -1,13 +1,13 @@
 Comics::Application.routes.draw do
   devise_for :users
+  
+  resources :volumes
 
   resources :series do 
     resources :issues
-    resources :volumes
   end
   
   resources :issues
-  resources :volumes
 
   root :to => "series#index"
   
