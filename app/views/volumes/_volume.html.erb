@@ -1,0 +1,15 @@
+<li class="span3">
+  <div>
+    <div class="spinner"></div>
+  <%= link_to (
+      image_tag volume.cover.url(:medium).to_s, :class => "thumbnail"),
+      series_volume_path(volume.series, volume.volume_number
+    )
+  %>
+    <%  %>
+    <% if !volume.own? %>
+    <span class="label label-important">Missing</span>
+    <% end -%>
+    <span class="label-title"><%= volume.series.title %> #<%= volume.volume_number %></span>
+  </div>
+</li>

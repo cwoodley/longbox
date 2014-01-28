@@ -1,29 +1,58 @@
-<%= form_for(@volume) do |f| %>
-  <% if @volume.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@volume.errors.count, "error") %> prohibited this volume from being saved:</h2>
+<%= simple_form_for @volume, :html => { :class => 'form-horizontal' } do |f| %>
+<fieldset>
+  <legend><%= controller.action_name.capitalize %> Volume</legend>
 
+  <% if @volume.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error %>">
+      <a class="close" data-dismiss="alert">x</a>
+      <%= pluralize(@volume.errors.count, "error") %> prohibited this volume from being saved:
       <ul>
       <% @volume.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :volume_number %><br />
-    <%= f.number_field :volume_number %>
+  <%= f.input :volume_number %>
+ 
+  <%= f.association :series, label_method: :title, value_method: :id, prompt: "Select a Series" %>
+
+  <% if params[:action] == "edit" %>
+  <div class="control-group">
+    <label class="control-label">Own</label>
+    <div class="controls">
+      <%= best_in_place @volume, :own, :type => :checkbox, :collection => [raw("<div class='btn-group'><span class='js-noaction btn btn-danger'>No</span><span class='js-noaction btn'>Yes</span></div>"), raw("<div class='btn-group'><span class='js-noaction btn'>No</span><span class='js-noaction btn btn-success'>Yes</span></div>")] %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :series_id %><br />
-    <%= f.number_field :series_id %>
+  <% elsif params[:action] == "new" %>
+  <%= f.input :own, :as => :boolean %>
+  <% end %>
+
+  <div class="control-group">
+      <label class="file optional control-label" for="volume_cover">Cover</label>
+      <div class="controls">  
+        <%= f.input_field :cover, :as => :file %>
+        <span class="help-block"><small><a href="#" id="remove_cover_url-toggle">Or upload via url instead</a></small></span>
+      </div>
+  </div> 
+
+
+  <div id="remove_cover_url-group" class="control-group hidden">
+    <label class="url optional control-label" for="volume_remote_cover_url">Remote cover url</label>
+    <div class="controls">
+      <div class="input-prepend">
+        <span class="add-on"><i class="icon-picture"></i></span>
+      <%= f.input_field :remote_cover_url %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :own %><br />
-    <%= f.check_box :own %>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= submit_tag 'Reset', :type => :reset, :class => "btn btn-danger" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</fieldset>
 <% end %>

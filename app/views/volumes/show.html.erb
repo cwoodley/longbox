@@ -1,20 +1,20 @@
-<p id="notice"><%= notice %></p>
+  <div class="cover-container span12">
 
-<p>
-  <b>Volume number:</b>
-  <%= @volume.volume_number %>
-</p>
+    <div id="spinner"></div>
+    <%= 
+      link_to (
+        image_tag @volume.cover.url(:large).to_s, :class => "thumbnail"),
+        series_volume_path(@volume.series, @volume.volume_number
+      )
+    %>
+  </div>
+    <% if !@volume.own? %>
+    <span class="label label-important">Missing</span>
+    <% end -%>
+    <span class="label-title"><%= @volume.series.title %> #<%= @volume.volume_number %></span>
 
-<p>
-  <b>Series:</b>
-  <%= @volume.series_id %>
-</p>
-
-<p>
-  <b>Own:</b>
-  <%= @volume.own %>
-</p>
-
-
-<%= link_to 'Edit', edit_volume_path(@volume) %> |
-<%= link_to 'Back', volumes_path %>
+<div class="btn-group">
+	<%= link_to 'Edit', edit_series_volume_path(@volume.series,@volume.volume_number), :class => "btn" %>
+	<%= link_to 'Delete', @volume, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %>
+	<%= link_to 'Back', series_path(@volume.series.slug), :class => "btn" %>
+</div>
